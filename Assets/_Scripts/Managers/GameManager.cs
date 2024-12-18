@@ -42,10 +42,13 @@ namespace Game.Managers
                     HandleTitleScreen();
                     break;
                 case GameState.Lobby:
+                    HandleLobby();
                     break;
                 case GameState.Play:
+                    HandlePlayGame();
                     break;
                 case GameState.End:
+                    EndGame();
                     break;
             }
 
@@ -66,8 +69,26 @@ namespace Game.Managers
             await UniTask.Delay(1000);
             await DimScreen.Instance.Show();
             TitleScreen.Instance.ForceHide();
+            await DimScreen.Instance.Hide();
 
             ChangeState(GameState.Lobby);
+        }
+
+        private async void HandleLobby()
+        {
+            Debug.Log("HandleLobby");
+            await UniTask.Delay(500);
+            ChangeState(GameState.Play);
+        }
+
+        private async void HandlePlayGame()
+        {
+            ChangeState(GameState.End);
+        }
+
+        private async void EndGame()
+        {
+
         }
     }
 }

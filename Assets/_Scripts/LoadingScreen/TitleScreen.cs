@@ -18,7 +18,7 @@ namespace Game
 
         public void ForceHide()
         {
-            canvas.enabled = true;
+            canvas.enabled = false;
         }
     }
 }
