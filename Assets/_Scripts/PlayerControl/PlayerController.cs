@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
+using Game.Managers;
 
 namespace Game
 {
@@ -9,6 +11,7 @@ namespace Game
     {
         [SerializeField] private Rigidbody rigidbody;
         [SerializeField] private Animator animator;
+        [SerializeField] private Transform followCam;
 
         [SerializeField] private float _moveSpeed;
 
@@ -19,6 +22,11 @@ namespace Game
             Run
         }
 
+        private FixedJoystick joystick;
+        private CinemachineVirtualCamera virtualCamera;
+        private state currentState = state.None;
+        private const float SPEED_RATE = 0.1667f;
+
         private void Awake()
         {
             this.animator.SetBool("Run", false);
@@ -26,10 +34,6 @@ namespace Game
 
             this.joystick = GameObject.FindObjectOfType<FixedJoystick>();
         }
-
-        private FixedJoystick joystick;
-        private state currentState = state.None;
-        private const float SPEED_RATE = 0.1667f;
 
         private void FixedUpdate()
         {
@@ -57,6 +61,19 @@ namespace Game
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag.Equals("EndPhase1"))
+            {
+                GameManager.Instance.ChangeState(GameState.Phase_2);
+            }
+
+            if (other.gameObject.tag.Equals("EndPhase2"))
+            {
+                GameManager.Instance.ChangeState(GameState.NextLevel);
             }
         }
     }

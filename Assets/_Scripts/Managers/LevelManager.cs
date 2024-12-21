@@ -51,7 +51,7 @@ namespace Game.Managers
             if (levelSO.CatPrefabs.Count <= 0)
                 return;
 
-            if (levelSO.PlayerPrefab)
+            if (levelSO.PlayerPrefab == null)
                 return;
 
             //Handle Weight

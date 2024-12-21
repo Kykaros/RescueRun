@@ -12,26 +12,35 @@ namespace Game.Managers
         None,
         Prepare,
         TitleScreen,
-        Lobby,
-        Play,
-        End
+        Intro,
+        Phase_1,
+        Phase_2,
+        TryAgain,
+        NextLevel
     }
 
     public class GameManager : Singleton<GameManager>
     {
         private GameState _state = GameState.None;
         public GameState State => this._state;
-        public event Action OnBeforeChangeState;
-        public event Action OnAfterChangeState;
+        public event Action<GameState> OnBeforeChangeState;
+        public event Action<GameState> OnAfterChangeState;
 
-        private void Start() => ChangeState(GameState.Prepare);
+        private void OnDestroy()
+        {
+            OnBeforeChangeState = null;
+            OnAfterChangeState = null;
+        }
+
+        private void Start() => ChangeState(GameState.TitleScreen);
 
         public void ChangeState(GameState newState)
         {
             if (_state == newState)
                 return;
 
-            OnBeforeChangeState?.Invoke();
+            _state = newState;
+            OnBeforeChangeState?.Invoke(newState);
 
             switch (newState)
             {
@@ -41,57 +50,75 @@ namespace Game.Managers
                 case GameState.TitleScreen:
                     HandleTitleScreen();
                     break;
-                case GameState.Lobby:
-                    HandleLobby();
+                case GameState.Intro:
+                    HandleIntro();
                     break;
-                case GameState.Play:
-                    HandlePlayGame();
+                case GameState.Phase_1:
+                    HandlePhase1();
                     break;
-                case GameState.End:
-                    EndGame();
+                case GameState.Phase_2:
+                    HandlePhase2();
+                    break;
+                case GameState.TryAgain:
+                    TryAgain();
+                    break;
+                case GameState.NextLevel:
+                    NextLevel();
+                    break;
+                default:
                     break;
             }
 
-            OnAfterChangeState?.Invoke();
+            OnAfterChangeState?.Invoke(_state);
         }
 
         private void HandlePrepareGame()
         {
-            DimScreen.Instance.ForceShow();
-            TitleScreen.Instance.ForceShow();
+            
 
             //setup level
             LevelManager.Instance.SetupLevel();
 
-            ChangeState(GameState.TitleScreen);
+            ChangeState(GameState.Intro);
         }
 
         private async void HandleTitleScreen()
         {
+            DimScreen.Instance.ForceShow();
+            TitleScreen.Instance.ForceShow();
+
             await DimScreen.Instance.Hide();
             await UniTask.Delay(1000);
             await DimScreen.Instance.Show();
             TitleScreen.Instance.ForceHide();
+
+            ChangeState(GameState.Prepare);
+        }
+
+        private async void HandleIntro()
+        {
             await DimScreen.Instance.Hide();
-
-            ChangeState(GameState.Lobby);
+            Debug.Log("HandleIntro");
         }
 
-        private async void HandleLobby()
+        private async void HandlePhase1()
         {
-            Debug.Log("HandleLobby");
-            await UniTask.Delay(500);
-            ChangeState(GameState.Play);
+            Debug.Log("HandlePhase1");
         }
 
-        private async void HandlePlayGame()
+        private async void HandlePhase2()
         {
-            ChangeState(GameState.End);
+            Debug.Log("HandlePhase2");
         }
 
-        private async void EndGame()
+        private async void TryAgain()
         {
+            Debug.Log("TryAgain");
+        }
 
+        private async void NextLevel()
+        {
+            Debug.Log("NextLevel");
         }
     }
 }
