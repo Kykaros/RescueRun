@@ -17,8 +17,8 @@ namespace Game
         public List<GameObject> CatPrefabs;
 
         [Space]
-        [Header("Weight for generate number object")]
-        public float Weight;
+        [Header("Weight for difficulty")]
+        public int Difficulty = 1;
 
         [Space]
         [Header("Radius spawn cats")]
@@ -29,5 +29,9 @@ namespace Game
         public Vector2 PlayerPosition;
         [Header("Player Prefab")]
         public GameObject PlayerPrefab;
+
+        [Space]
+        [Header("Obstacle")]
+        public List<GameObject> Obstacles;
     }
 }

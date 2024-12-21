@@ -60,6 +60,9 @@ namespace Game.Managers
             DimScreen.Instance.ForceShow();
             TitleScreen.Instance.ForceShow();
 
+            //setup level
+            LevelManager.Instance.SetupLevel();
+
             ChangeState(GameState.TitleScreen);
         }
 

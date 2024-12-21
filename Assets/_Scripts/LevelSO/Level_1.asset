@@ -19,14 +19,10 @@ MonoBehaviour:
   - {x: 30, y: 240}
   - {x: 80, y: 290}
   - {x: 60, y: 370}
-  CatPrefabs:
-  - {fileID: 6406104549388898638, guid: 752566b68b7b20e4cb6e94b2c25afd55, type: 3}
-  - {fileID: 4940788795420556183, guid: a7f5f3d0368b3f84c8854fc9f09f48c6, type: 3}
-  - {fileID: 6824056633908700397, guid: e1e2bfd57f1707645ba5065336a429a6, type: 3}
-  - {fileID: 7329176190649520718, guid: 2499abf9b50c954419c4c124aa72a495, type: 3}
-  - {fileID: 2921632596715241418, guid: af4ee10a2459b814f8dbb380928df496, type: 3}
-  Weight: 0
+  CatPrefabs: []
+  Difficulty: 1
   SpawnRadius: 20
   PlayerPosition: {x: 50, y: 0}
   PlayerPrefab: {fileID: 8558242874603360054, guid: c97b74cb85571884eae8889265ac9a6e,
     type: 3}
+  Obstacles: []
