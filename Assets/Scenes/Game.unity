@@ -1083,9 +1083,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   catParent: {fileID: 649674117}
+  obstacleParent: {fileID: 1798544140}
+  waveParent: {fileID: 6720779374267823514}
   levels:
   - {fileID: 11400000, guid: c252cf93da024ff429b84068ade0ba88, type: 2}
-  numberLevelAutoGenerate: 0
+  pathFolderLevel: Assets\_Scripts\LevelSO\AutoGenLevel
+  numberLevelAutoGenerate: 10
+  fixedCatsPositionSO: {fileID: 11400000, guid: 25e4785bd482671498ab3d8c4229384c,
+    type: 2}
+  fixedObstaclesPositionSO: {fileID: 11400000, guid: 80aeef3b5685fb643ada0659e8b3f7f3,
+    type: 2}
+  catPrefabs:
+  - {fileID: 7105132547998492349, guid: 58ced539c013dab46a8a4af281cd1184, type: 3}
+  - {fileID: 6544990386230654568, guid: cbd015c8392edc84097e8e4de87a9d0a, type: 3}
+  - {fileID: 3925358294965130716, guid: 3568ea2e97a164d43a0c334ab62e8694, type: 3}
+  - {fileID: 4333106941318723275, guid: cc6b3e636f70b5044994ea3e192717ac, type: 3}
+  - {fileID: 2966845795971187337, guid: 3e9ebf26f6c110142a94d7ad4f46b9f1, type: 3}
+  obstaclePrefabs:
+  - {fileID: 2474574837280715205, guid: d484a917f4612e84babae6c77525475e, type: 3}
+  - {fileID: 7360758116928354588, guid: 63c578bfacc30ed4f8e98d7805a3dc35, type: 3}
+  - {fileID: 3023291464778589183, guid: ceb0b476f33f8cd40a9982e6f0a2a4e8, type: 3}
+  - {fileID: 4902878149296985636, guid: 00de45298cef55749b3281dd00531c33, type: 3}
+  - {fileID: 3197457026238870664, guid: 8ee2afdea41a47f4fb1a3c40c8e0a0a4, type: 3}
+  wavePrefabs:
+  - {fileID: 6522043469345599615, guid: 8badd7ebe293c5242978ea39db0a2e1e, type: 3}
+  - {fileID: 6522043469345599615, guid: 0a0bc4c01808f2c4f9ffac2e8abc397b, type: 3}
+  playerPrefab: {fileID: 6026532221120533981, guid: a692d0b0f7a34b9439c4c2f3fed7a7b3,
+    type: 3}
   levelTestIndex: 0
 --- !u!1 &1361648276
 GameObject:
@@ -1672,6 +1696,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 720751714961839966, guid: 2b41d073dc1782e4aa4946c05816cfa5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2546722274891278417, guid: 2b41d073dc1782e4aa4946c05816cfa5,
         type: 3}
       propertyPath: m_IsTrigger
@@ -1682,11 +1711,31 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 4739996850697427960, guid: 2b41d073dc1782e4aa4946c05816cfa5,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 4739996850697427960, guid: 2b41d073dc1782e4aa4946c05816cfa5,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5721512850309495570, guid: 2b41d073dc1782e4aa4946c05816cfa5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 361db4e609689614a802e10f1bfe1acb, type: 2}
+    - target: {fileID: 5855186828565994697, guid: 2b41d073dc1782e4aa4946c05816cfa5,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642113915143176660, guid: 2b41d073dc1782e4aa4946c05816cfa5,
+        type: 3}
+      propertyPath: m_Name
+      value: Water
+      objectReference: {fileID: 0}
     - target: {fileID: 6720779374242264366, guid: 2b41d073dc1782e4aa4946c05816cfa5,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1757,6 +1806,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 400
       objectReference: {fileID: 0}
+    - target: {fileID: 7279399077085484883, guid: 2b41d073dc1782e4aa4946c05816cfa5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8069395412574022441, guid: 2b41d073dc1782e4aa4946c05816cfa5,
         type: 3}
       propertyPath: m_Enabled
@@ -1764,3 +1818,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b41d073dc1782e4aa4946c05816cfa5, type: 3}
+--- !u!4 &6720779374267823514 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 720751714961839966, guid: 2b41d073dc1782e4aa4946c05816cfa5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6720779374267823513}
+  m_PrefabAsset: {fileID: 0}

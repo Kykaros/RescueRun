@@ -10,8 +10,9 @@ namespace Game.Managers
     public enum GameState
     {
         None,
-        Prepare,
         TitleScreen,
+        Prepare,
+        SetupMap,
         Intro,
         Phase_1,
         Phase_2,
@@ -74,8 +75,6 @@ namespace Game.Managers
 
         private void HandlePrepareGame()
         {
-            
-
             //setup level
             LevelManager.Instance.SetupLevel();
 
@@ -119,6 +118,11 @@ namespace Game.Managers
         private async void NextLevel()
         {
             Debug.Log("NextLevel");
+        }
+
+        private async void HandleSetupMap()
+        {
+            Debug.Log("HandleSetupMap");
         }
     }
 }

@@ -58,26 +58,28 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
     <Compile Include="Assets\_Scripts\Common\Singleton.cs" />
     <Compile Include="Assets\_Scripts\LoadingScreen\TitleScreen.cs" />
+    <Compile Include="Assets\_GameAssets\Layer Lab\GUI PRO Kit - Simple Casual\Scripts\PanelSimpleCasual.cs" />
+    <Compile Include="Assets\_Scripts\Water\WaveBehavior.cs" />
+    <Compile Include="Assets\_Scripts\Camera\CameraMan.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
     <Compile Include="Assets\_GameAssets\Bublisher\3D Stylized Animated Dogs Kit\Scripts\AnimationButton.cs" />
     <Compile Include="Assets\_Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
-    <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
-    <Compile Include="Assets\_Scripts\Managers\LevelManager.cs" />
-    <Compile Include="Assets\_Scripts\ScriptTableObject\LevelSO.cs" />
-    <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
-    <Compile Include="Assets\_GameAssets\Layer Lab\GUI PRO Kit - Simple Casual\Scripts\PanelSimpleCasual.cs" />
+    <Compile Include="Assets\_Scripts\ScriptTableObject\FixedPositionCatsSO.cs" />
     <Compile Include="Assets\_GameAssets\Layer Lab\GUI PRO Kit - Simple Casual\Scripts\PanelControlSimpleCasual.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
     <Compile Include="Assets\_Scripts\PlayerControl\PlayerController.cs" />
     <Compile Include="Assets\_GameAssets\Bublisher\3D Stylized Animated Dogs Kit\Scripts\DemoController.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
+    <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
+    <Compile Include="Assets\_Scripts\Managers\LevelManager.cs" />
+    <Compile Include="Assets\_Scripts\ScriptTableObject\FixedObstaclesPositionSO.cs" />
+    <Compile Include="Assets\_Scripts\ScriptTableObject\LevelSO.cs" />
     <Compile Include="Assets\_Scripts\LoadingScreen\DimScreen.cs" />
-    <Compile Include="Assets\_Scripts\Water\WaterBehavior.cs" />
-    <Compile Include="Assets\_Scripts\Camera\CameraMan.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_GameAssets\Project Data\Watermelon Core\Core\Shaders\Includes\Shadow Atten\Shadow Atten.hlsl" />
@@ -978,6 +980,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
       <Private>False</Private>
@@ -986,8 +992,8 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
+      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">
@@ -1016,10 +1022,6 @@
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">

@@ -1,37 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using Game.Managers;
-using Unity.VisualScripting;
 
 namespace Game
 {
     [CreateAssetMenu(fileName ="LevelSO", menuName ="LevelDesign/LevelSO", order = 1)]
     public class LevelSO : ScriptableObject
     {
-        [Header("List Position Cats")]
+        [Header("Cats")]
         public List<Vector2> CatPositions;
-
-        [Header("Cats Prefab")]
         public List<GameObject> CatPrefabs;
 
         [Space]
-        [Header("Weight for difficulty")]
-        public int Difficulty = 1;
+        [Header("Wave")]
+        public float WaveVelocity = 10;
+        public GameObject WavePrefab;
 
         [Space]
         [Header("Radius spawn cats")]
-        public float SpawnRadius;
+        public float SpawnCatRadius;
 
         [Space]
-        [Header("Player start position")]
+        [Header("Player")]
         public Vector2 PlayerPosition;
-        [Header("Player Prefab")]
         public GameObject PlayerPrefab;
 
         [Space]
         [Header("Obstacle")]
-        public List<GameObject> Obstacles;
+        public List<GameObject> ObstaclesPrefab;
+        public List<Vector2> ObstaclePositions;
+
+        [Space]
+        [Header("Radius spawn obstacles")]
+        public float SpawnObstacleRadius;
     }
 }

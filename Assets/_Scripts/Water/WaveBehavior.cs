@@ -5,19 +5,18 @@ using Game.Managers;
 
 namespace Game
 {
-    public class WaterBehavior : MonoBehaviour
+    public class WaveBehavior : MonoBehaviour
     {
         [SerializeField] private Transform destinationPhase1;
         [SerializeField] private Transform destinationPhase2;
-        //[SerializeField] private float durationPhase1;
-        //[SerializeField] private float durationPhase2;
-        [SerializeField] private float velocityPhase1;
-        [SerializeField] private float velocityPhase2;
+        [SerializeField] private float velocityBegin;
         [Space]
         [SerializeField] private float velocity = 0;
         [Space]
         [Header("Start Position")]
         [SerializeField] private Vector3 startPos;
+
+        private const float INCREASE_SPEED_RATE = 30f;
 
         private bool canMove = false;
 
@@ -37,7 +36,7 @@ namespace Game
         private void StartMove()
         {
             canMove = true;
-            velocity = velocityPhase1;
+            velocity = velocityBegin;
         }
 
         private void ResetWave()
@@ -71,7 +70,7 @@ namespace Game
             if (other.gameObject.tag.Equals("EndPhase1"))
             {
                 Debug.Log("Water change Speed !");
-                velocity = velocityPhase2;
+                velocity = velocityBegin + INCREASE_SPEED_RATE;
             }
 
             if (other.gameObject.tag.Equals("EndPhase2"))
@@ -86,6 +85,11 @@ namespace Game
         {
             if(canMove)
                 transform.Translate(Vector3.forward * velocity * Time.deltaTime);
+        }
+
+        public void SetVelocityBegin(float value)
+        {
+            velocityBegin = value;
         }
     }
 }

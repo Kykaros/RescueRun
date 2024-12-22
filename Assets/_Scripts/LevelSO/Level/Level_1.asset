@@ -25,9 +25,24 @@ MonoBehaviour:
   - {fileID: 3925358294965130716, guid: 3568ea2e97a164d43a0c334ab62e8694, type: 3}
   - {fileID: 6544990386230654568, guid: cbd015c8392edc84097e8e4de87a9d0a, type: 3}
   - {fileID: 7105132547998492349, guid: 58ced539c013dab46a8a4af281cd1184, type: 3}
-  Difficulty: 1
+  WaveVelocity: 10
+  WavePrefabs:
+  - {fileID: 6522043469345599615, guid: 8badd7ebe293c5242978ea39db0a2e1e, type: 3}
+  - {fileID: 6522043469345599615, guid: 0a0bc4c01808f2c4f9ffac2e8abc397b, type: 3}
   SpawnRadius: 20
   PlayerPosition: {x: 50, y: 0}
   PlayerPrefab: {fileID: 6026532221120533981, guid: a692d0b0f7a34b9439c4c2f3fed7a7b3,
     type: 3}
-  Obstacles: []
+  ObstaclesPrefab:
+  - {fileID: 2474574837280715205, guid: d484a917f4612e84babae6c77525475e, type: 3}
+  - {fileID: 4902878149296985636, guid: 00de45298cef55749b3281dd00531c33, type: 3}
+  - {fileID: 3197457026238870664, guid: 8ee2afdea41a47f4fb1a3c40c8e0a0a4, type: 3}
+  - {fileID: 7360758116928354588, guid: 63c578bfacc30ed4f8e98d7805a3dc35, type: 3}
+  - {fileID: 3023291464778589183, guid: ceb0b476f33f8cd40a9982e6f0a2a4e8, type: 3}
+  ObstaclePositions:
+  - {x: 20, y: 50}
+  - {x: 80, y: 90}
+  - {x: 20, y: 160}
+  - {x: 90, y: 240}
+  - {x: 10, y: 290}
+  - {x: 40, y: 350}

@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca3d3ea82bd8935468c3524ec7902138, type: 3}
+  m_Name: LevelSO_1
+  m_EditorClassIdentifier: 
+  CatPositions:
+  - {x: 80, y: 50}
+  - {x: 20, y: 90}
+  - {x: 70, y: 160}
+  - {x: 30, y: 240}
+  - {x: 80, y: 290}
+  - {x: 60, y: 370}
+  CatPrefabs:
+  - {fileID: 7105132547998492349, guid: 58ced539c013dab46a8a4af281cd1184, type: 3}
+  - {fileID: 6544990386230654568, guid: cbd015c8392edc84097e8e4de87a9d0a, type: 3}
+  - {fileID: 3925358294965130716, guid: 3568ea2e97a164d43a0c334ab62e8694, type: 3}
+  - {fileID: 4333106941318723275, guid: cc6b3e636f70b5044994ea3e192717ac, type: 3}
+  - {fileID: 2966845795971187337, guid: 3e9ebf26f6c110142a94d7ad4f46b9f1, type: 3}
+  WaveVelocity: 10.5
+  WavePrefab: {fileID: 6522043469345599615, guid: 0a0bc4c01808f2c4f9ffac2e8abc397b,
+    type: 3}
+  SpawnCatRadius: 20
+  PlayerPosition: {x: 50, y: 0}
+  PlayerPrefab: {fileID: 6026532221120533981, guid: a692d0b0f7a34b9439c4c2f3fed7a7b3,
+    type: 3}
+  ObstaclesPrefab:
+  - {fileID: 2474574837280715205, guid: d484a917f4612e84babae6c77525475e, type: 3}
+  - {fileID: 7360758116928354588, guid: 63c578bfacc30ed4f8e98d7805a3dc35, type: 3}
+  - {fileID: 3023291464778589183, guid: ceb0b476f33f8cd40a9982e6f0a2a4e8, type: 3}
+  - {fileID: 4902878149296985636, guid: 00de45298cef55749b3281dd00531c33, type: 3}
+  - {fileID: 3197457026238870664, guid: 8ee2afdea41a47f4fb1a3c40c8e0a0a4, type: 3}
+  ObstaclePositions:
+  - {x: 20, y: 50}
+  - {x: 80, y: 90}
+  - {x: 20, y: 160}
+  - {x: 90, y: 240}
+  - {x: 10, y: 290}
+  - {x: 40, y: 350}
+  SpawnObstacleRadius: 5
