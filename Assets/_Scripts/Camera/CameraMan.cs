@@ -16,16 +16,12 @@ namespace Game
 
         private CinemachineBrain cinemachineBrain;
 
-        private void Awake()
-        {
-            cinemachineBrain = GetComponent<CinemachineBrain>();
-        }
-
         private void OnDestroy()
         {
             if(GameManager.Instance != null)
             {
                 GameManager.Instance.OnAfterChangeState -= OnAfterChangeState;
+                GameManager.Instance.OnBeforeChangeState -= OnBeforeChangeState;
             }
         }
 
@@ -34,7 +30,10 @@ namespace Game
             followCam.Priority = 0;
             introCam.Priority = 1;
 
+            cinemachineBrain = GetComponent<CinemachineBrain>();
+
             GameManager.Instance.OnAfterChangeState += OnAfterChangeState;
+            GameManager.Instance.OnBeforeChangeState += OnBeforeChangeState;
         }
 
         private void SetupFollowCam()
@@ -56,14 +55,17 @@ namespace Game
 
         private void OnAfterChangeState(GameState state)
         {
-            if (state == GameState.Prepare)
-            {
-                SetupFollowCam();
-            }
-
             if(state == GameState.Intro)
             {
                 PlayIntroGame().Forget();
+            }
+        }
+
+        private void OnBeforeChangeState(GameState state)
+        {
+            if (state == GameState.Prepare)
+            {
+                SetupFollowCam();
             }
         }
     }

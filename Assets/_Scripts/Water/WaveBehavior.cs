@@ -22,14 +22,14 @@ namespace Game
 
         private void Start()
         {
-            GameManager.Instance.OnAfterChangeState += OnChangeState;
+            GameManager.Instance.OnAfterChangeState += OnAfterChangeState;
         }
 
         private void OnDestroy()
         {
             if (GameManager.Instance != null)
             {
-                GameManager.Instance.OnAfterChangeState -= OnChangeState;
+                GameManager.Instance.OnAfterChangeState -= OnAfterChangeState;
             }
         }
 
@@ -46,7 +46,7 @@ namespace Game
             transform.localPosition = startPos;
         }
 
-        private void OnChangeState(GameState state)
+        private void OnAfterChangeState(GameState state)
         {
             if(state == GameState.Phase_1)
             {

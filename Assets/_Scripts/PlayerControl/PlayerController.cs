@@ -11,7 +11,7 @@ namespace Game
     {
         [SerializeField] private Rigidbody rigidbody;
         [SerializeField] private Animator animator;
-        [SerializeField] private Transform followCam;
+        //public Transform followCam;
 
         [SerializeField] private float _moveSpeed;
 

@@ -40,8 +40,8 @@ namespace Game.Managers
             if (_state == newState)
                 return;
 
+            OnBeforeChangeState?.Invoke(_state);
             _state = newState;
-            OnBeforeChangeState?.Invoke(newState);
 
             switch (newState)
             {
@@ -78,6 +78,7 @@ namespace Game.Managers
             //setup level
             LevelManager.Instance.SetupLevel();
 
+            Debug.Log("HandlePrepareGame");
             ChangeState(GameState.Intro);
         }
 

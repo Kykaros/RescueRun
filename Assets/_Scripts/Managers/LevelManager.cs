@@ -30,7 +30,7 @@ namespace Game.Managers
         [Header("Support test")]
         [SerializeField] private int levelTestIndex;
 
-        private int currentLevel;
+        private int currentLevel = 0;
         public int CurrentLevel => this.currentLevel;
 
         private List<GameObject> listCat = new List<GameObject>();
@@ -78,7 +78,6 @@ namespace Game.Managers
 
             //Handle wave
             float waveVelocity = levelSO.WaveVelocity;
-            Debug.Log($"waveVelocity: {waveVelocity}");
             waveBehavior?.SetVelocityBegin(waveVelocity);
             wave = Instantiate(levelSO.WavePrefab, waveParent);
             wave.transform.localPosition = Vector3.zero;
@@ -95,7 +94,6 @@ namespace Game.Managers
                 var y = Random.Range(minY, maxY);
 
                 var position = new Vector3(x, 0, y);
-                Debug.Log($"[CatPosition]: {index} | {position}");
 
                 var indexCat = Random.Range(0, levelSO.CatPrefabs.Count);
                 GameObject cat = Instantiate(levelSO.CatPrefabs[indexCat], position, Quaternion.identity, catParent);
@@ -103,7 +101,6 @@ namespace Game.Managers
             }
             
             //Handle Player
-            Debug.Log($"PlayerPosition: {levelSO.PlayerPosition}");
             var playerPosition = new Vector3(levelSO.PlayerPosition.x, 0, levelSO.PlayerPosition.y);
             player = Instantiate(levelSO.PlayerPrefab, playerPosition, Quaternion.identity);
 
@@ -119,7 +116,6 @@ namespace Game.Managers
                 var y = Random.Range(minY, maxY);
 
                 var position = new Vector3(x, 0, y);
-                Debug.Log($"[Obstacles Position]: {i} | {position}");
 
                 var indexObstacle = Random.Range(0, levelSO.ObstaclesPrefab.Count);
                 GameObject obstacle = Instantiate(levelSO.ObstaclesPrefab[indexObstacle], position, Quaternion.identity, obstacleParent);
