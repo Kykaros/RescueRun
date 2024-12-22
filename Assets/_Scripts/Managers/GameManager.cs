@@ -12,8 +12,8 @@ namespace Game.Managers
         None,
         TitleScreen,
         Prepare,
-        SetupMap,
         Intro,
+        IncreaseSpeed,
         Phase_1,
         Phase_2,
         TryAgain,
@@ -24,13 +24,11 @@ namespace Game.Managers
     {
         private GameState _state = GameState.None;
         public GameState State => this._state;
-        public event Action<GameState> OnBeforeChangeState;
-        public event Action<GameState> OnAfterChangeState;
+        public event Action<GameState> OnChangeState;
 
         private void OnDestroy()
         {
-            OnBeforeChangeState = null;
-            OnAfterChangeState = null;
+            OnChangeState = null;
         }
 
         private void Start() => ChangeState(GameState.TitleScreen);
@@ -40,8 +38,8 @@ namespace Game.Managers
             if (_state == newState)
                 return;
 
-            OnBeforeChangeState?.Invoke(_state);
             _state = newState;
+            OnChangeState?.Invoke(_state);
 
             switch (newState)
             {
@@ -50,6 +48,9 @@ namespace Game.Managers
                     break;
                 case GameState.TitleScreen:
                     HandleTitleScreen();
+                    break;
+                case GameState.IncreaseSpeed:
+                    HandleIncreaseSpeed();
                     break;
                 case GameState.Intro:
                     HandleIntro();
@@ -69,8 +70,6 @@ namespace Game.Managers
                 default:
                     break;
             }
-
-            OnAfterChangeState?.Invoke(_state);
         }
 
         private void HandlePrepareGame()
@@ -103,6 +102,7 @@ namespace Game.Managers
 
         private async void HandlePhase1()
         {
+
             Debug.Log("HandlePhase1");
         }
 
@@ -113,17 +113,29 @@ namespace Game.Managers
 
         private async void TryAgain()
         {
+            await DimScreen.Instance.Show();
+            LevelManager.Instance.ResetLevel();
+            ChangeState(GameState.Prepare);
             Debug.Log("TryAgain");
         }
 
         private async void NextLevel()
         {
+            //reset state game
+            await DimScreen.Instance.Show();
+            LevelManager.Instance.ResetLevel();
+            LevelManager.Instance.NextLevel();
+            ChangeState(GameState.Prepare);
             Debug.Log("NextLevel");
         }
 
-        private async void HandleSetupMap()
+        private async void HandleIncreaseSpeed()
         {
-            Debug.Log("HandleSetupMap");
+            //TODO: Tap for increase speed
+            Debug.Log("HandleIncreaseSpeed");
+            UIManager.Instance.ShowTapIncreaseSpeed().Forget();
+            await UniTask.Delay(2000);
+            ChangeState(GameState.Phase_1);
         }
     }
 }

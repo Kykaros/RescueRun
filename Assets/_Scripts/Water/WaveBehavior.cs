@@ -2,6 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using Singleton;
 using Game.Managers;
+using Cysharp.Threading.Tasks;
 
 namespace Game
 {
@@ -22,14 +23,14 @@ namespace Game
 
         private void Start()
         {
-            GameManager.Instance.OnAfterChangeState += OnAfterChangeState;
+            GameManager.Instance.OnChangeState += OnAfterChangeState;
         }
 
         private void OnDestroy()
         {
             if (GameManager.Instance != null)
             {
-                GameManager.Instance.OnAfterChangeState -= OnAfterChangeState;
+                GameManager.Instance.OnChangeState -= OnAfterChangeState;
             }
         }
 
@@ -53,7 +54,7 @@ namespace Game
                 StartMove();
             }
 
-            if(state == GameState.TryAgain)
+            if(state == GameState.Prepare)
             {
                 ResetWave();
             }
@@ -64,7 +65,9 @@ namespace Game
         {
             if (other.gameObject.tag.Equals("Player"))
             {
-                GameManager.Instance.ChangeState(GameState.TryAgain);
+                canMove = false;
+                velocity = 0;
+                UIManager.Instance.ShowTryAgain(() => GameManager.Instance.ChangeState(GameState.TryAgain)).Forget();
             }
 
             if (other.gameObject.tag.Equals("EndPhase1"))

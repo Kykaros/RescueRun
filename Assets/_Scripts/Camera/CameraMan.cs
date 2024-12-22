@@ -20,25 +20,28 @@ namespace Game
         {
             if(GameManager.Instance != null)
             {
-                GameManager.Instance.OnAfterChangeState -= OnAfterChangeState;
-                GameManager.Instance.OnBeforeChangeState -= OnBeforeChangeState;
+                GameManager.Instance.OnChangeState -= OnChangeState;
             }
         }
 
         private void Start()
         {
-            followCam.Priority = 0;
-            introCam.Priority = 1;
+            ResetPriorityCam();
 
             cinemachineBrain = GetComponent<CinemachineBrain>();
 
-            GameManager.Instance.OnAfterChangeState += OnAfterChangeState;
-            GameManager.Instance.OnBeforeChangeState += OnBeforeChangeState;
+            GameManager.Instance.OnChangeState += OnChangeState;
         }
 
         private void SetupFollowCam()
         {
             followCam.Follow = GameObject.FindAnyObjectByType<PlayerController>().transform;
+        }
+
+        private void ResetPriorityCam()
+        {
+            followCam.Priority = 0;
+            introCam.Priority = 1;
         }
 
         private async UniTask PlayIntroGame()
@@ -48,24 +51,26 @@ namespace Game
             introCam.Priority = 0;
             followCam.Priority = 1;
 
-            await UniTask.Delay(500, cancellationToken: default);
+            await UniTask.Delay(1500, cancellationToken: default);
 
-            GameManager.Instance.ChangeState(GameState.Phase_1);
+            GameManager.Instance.ChangeState(GameState.IncreaseSpeed);
         }
 
-        private void OnAfterChangeState(GameState state)
+        private void OnChangeState(GameState state)
         {
             if(state == GameState.Intro)
             {
                 PlayIntroGame().Forget();
             }
-        }
 
-        private void OnBeforeChangeState(GameState state)
-        {
-            if (state == GameState.Prepare)
+            if (state == GameState.Intro)
             {
                 SetupFollowCam();
+            }
+
+            if(state == GameState.Prepare)
+            {
+                ResetPriorityCam();
             }
         }
     }

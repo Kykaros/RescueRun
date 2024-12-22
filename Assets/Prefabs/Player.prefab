@@ -873,7 +873,7 @@ GameObject:
   - component: {fileID: 6026532221120533977}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Visitor
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -924,8 +924,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 6026532221120533982}
   animator: {fileID: 6821108796322005081}
-  followCam: {fileID: 0}
-  _moveSpeed: 15
+  playerInfo:
+    Stamina: 0
+    Speed: 50
+    InCome: 1
 --- !u!136 &6026532221120533977
 CapsuleCollider:
   m_ObjectHideFlags: 0

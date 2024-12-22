@@ -30,7 +30,7 @@ namespace Game.Managers
         [Header("Support test")]
         [SerializeField] private int levelTestIndex;
 
-        private int currentLevel = 0;
+        [SerializeField] private int currentLevel = 0;
         public int CurrentLevel => this.currentLevel;
 
         private List<GameObject> listCat = new List<GameObject>();
@@ -66,6 +66,11 @@ namespace Game.Managers
                 return;
 
             currentLevel = value;
+        }
+
+        public void ResetLevel()
+        {
+            ClearLevelOnScene();
         }
 
         private void Setup(LevelSO levelSO)
